@@ -8,8 +8,17 @@ using namespace std;
 Set::Set():Set(0) {}
 
 Set::Set(int _Power)
-{
-    if (_Power == 0) Arr = nullptr;
+{ 
+    if (_Power == 0) Arr = nullptr; 
+    else {
+        Power = _Power;
+        Arr = new unsigned int[Power];
+
+        for (int i = 0; i < Power; i++)
+        {
+            Arr[i] = 0;
+        }
+    }
    
 }
 
