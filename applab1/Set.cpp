@@ -9,14 +9,8 @@ Set::Set():Set(0) {}
 
 Set::Set(int _Power)
 {
-    if (_Power == 0) Arr == nullptr;
-    Power = _Power;
-    Arr = new unsigned int[Power];
-
-    for (int i = 0; i < Power; i++)
-    {
-        Arr[i] = 0;
-    }
+    if (_Power == 0) Arr = nullptr;
+   
 }
 
 
@@ -60,12 +54,12 @@ Set Set::Intersection(Set a, Set b)
 
 void Set::Input()
 {
-    cout << "Ââåäèòå ðàçìåð " << endl;
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã°Ã Ã§Ã¬Ã¥Ã° " << endl;
     cin >> Power;
     Arr = new unsigned int[Power];
     for (int i = 0; i < Power; i++)
     {
-        cout << "Ââåäèòå ýëåìåíò [" << i + 1 << "]   ";
+        cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã² [" << i + 1 << "]   ";
         cin >> Arr[i];
     }
 }
