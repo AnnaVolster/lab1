@@ -20,10 +20,9 @@ int main()
 	b.Output();
 
 	
-	Set c;
-	c = c.Intersection(a, b);
+
 	cout << "Пересечение множеств" << endl;
-	c.Output();
+	a.Intersection(b);
 	
 
 	return 0;

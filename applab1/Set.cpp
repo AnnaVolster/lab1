@@ -9,14 +9,7 @@ Set::Set():Set(0) {}
 
 Set::Set(int _Power)
 {
-    if (_Power == 0) Arr == nullptr;
-    Power = _Power;
-    Arr = new unsigned int[Power];
-
-    for (int i = 0; i < Power; i++)
-    {
-        Arr[i] = 0;
-    }
+    realloc(_Power);
 }
 
 
@@ -29,14 +22,14 @@ Set::Set(const Set& p) : Set(p.Power) {
 }
 
 
-Set Set::Intersection(Set a, Set b)
+void Set::Intersection(Set const& b)
 { 
-    int i, j, n = 0;
+    int n = 0;
 
-    for (i = 0; i < a.Power; i++)
-        for (j = 0; j < b.Power; j++)
+    for (int i = 0; i < Power; ++i)
+        for (int j = 0; j < b.Power; ++j)
         {
-            if (a.Arr[i] == b.Arr[j])
+            if (Arr[i] == b.Arr[j])
             {
                 n++;
             }
@@ -45,16 +38,15 @@ Set Set::Intersection(Set a, Set b)
    Set obj;
    obj.Power = n;
     
-    for (i = 0; i < a.Power; i++)
-        for (j = 0; j < b.Power; j++)
+    for (int i = 0; i < Power; ++i)
+        for (int j = 0; j < b.Power; ++j)
         {
-            if (a.Arr[i] == b.Arr[j])
+            if (Arr[i] == b.Arr[j])
             {
-              obj.Arr[i] = a.Arr[i];
+              obj.Arr[i] = Arr[i];
             }
         }
-
-    return obj;
+    obj.Output();
 }
 
 
@@ -62,13 +54,15 @@ void Set::Input()
 {
     cout << "Введите размер " << endl;
     cin >> Power;
-    Arr = new unsigned int[Power];
+    realloc(Power);
     for (int i = 0; i < Power; i++)
     {
         cout << "Введите элемент [" << i + 1 << "]   ";
         cin >> Arr[i];
     }
 }
+
+
 
 void Set::Output()
 {
@@ -77,6 +71,36 @@ void Set::Output()
     cout << endl;
 }
 
+
+void Set::realloc(int new_pow) {
+    if (Arr != nullptr) 
+    { 
+        delete[] Arr; 
+    }
+    if (new_pow != 0) 
+    { 
+        Arr = new unsigned int[new_pow];
+    }
+    else { 
+        Arr = nullptr; 
+    }
+    Power = new_pow;
+}
+
+int Set::power() const {
+    return Power;
+}
+
+int& Set::at(size_t index) {
+
+    return Arr[index];
+
+}
+
+void Set::insert(size_t index, int value) {
+
+    Arr[index] = value;
+}
 
 Set::~Set()
 {
