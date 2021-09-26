@@ -4,7 +4,7 @@ class Set
 {
 private:
 	int Power;
-	unsigned int* Arr;
+	unsigned int* Arr = nullptr;
 
 public:
 	Set();
@@ -13,7 +13,8 @@ public:
 
 	Set(const Set& p);
 	
-    Set Intersection(Set, Set);
+	//void realloc(int new_pow);
+	void Intersection(Set const& b);
 	void Input();
 	void Output();
 	~Set();
