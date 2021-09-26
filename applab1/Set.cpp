@@ -22,7 +22,7 @@ Set::Set(const Set& p) : Set(p.Power) {
 }
 
 
-void Set::Intersection(Set const& b)
+Set Set::Intersection(Set const& b)
 { 
     int n = 0;
 
@@ -35,8 +35,7 @@ void Set::Intersection(Set const& b)
             }
         }
    
-   Set obj;
-   obj.Power = n;
+    Set obj(n);
     
     for (int i = 0; i < Power; ++i)
         for (int j = 0; j < b.Power; ++j)
@@ -46,7 +45,9 @@ void Set::Intersection(Set const& b)
               obj.Arr[i] = Arr[i];
             }
         }
-    obj.Output();
+
+    return obj;
+
 }
 
 
@@ -91,7 +92,7 @@ int Set::power() const {
     return Power;
 }
 
-int& Set::at(size_t index) {
+unsigned int& Set::at(size_t index) {
 
     return Arr[index];
 
@@ -101,22 +102,6 @@ void Set::insert(size_t index, int value) {
 
     Arr[index] = value;
 }
-
-void Set::realloc(int new_pow) {
-    if (Arr != nullptr) 
-    { 
-        delete[] Arr; 
-    }
-    if (new_pow != 0) 
-    { 
-        Arr = new unsigned int[new_pow];
-    }
-    else { 
-        Arr = nullptr; 
-    }
-    Power = new_pow;
-}
-
 
 Set::~Set()
 {
