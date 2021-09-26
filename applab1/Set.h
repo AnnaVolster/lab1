@@ -13,12 +13,12 @@ public:
 
 	Set(const Set& p);
 	
-	void Intersection(Set const& b);
+	Set Intersection(Set const& b);
 	void Input();
 	void Output();
 	void realloc(int new_pow);
 	int power() const;
-	int& at(size_t index);
+	unsigned int& at(size_t index);
 	void insert(size_t index, int value);
 	~Set();
 };
