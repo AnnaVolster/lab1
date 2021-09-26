@@ -1,29 +1,65 @@
 #include "Set.h"
+#include <cassert>
 #include <iostream>
 #include <vld.h>
 
 using namespace std;
 
+
 int main()
 {
+	int Power;
+	cout << "Enter power a:" << endl;
+	cin >> Power;
+	try
+	{
+		if (Power == 0) throw 0;
+	}
+	catch (const int& e)
+	{
+		cout << "The �ower of The Set shouldn't be 0!" << endl;
+		return 0;
 
-	setlocale(0, "");
+	}
 
-	Set a;
-	cout << "Множество А: " << endl;
-	a.Input();
-	a.Output();
+	Set a(Power);
+	for (int i = 0; i <a.power(); i++)
+	{
+		cout << "Enter element [" << i + 1 << "]   ";
+		unsigned int value;
+		cin >> value;
+		a.insert(i, value);
+	}
 
-	Set b;
-	cout << "Множество B: " << endl;
-	b.Input();
-	b.Output();
+	cout << "Enter power b:" << endl;
+	cin >> Power;
 
+	try
+	{
+		if (Power == 0) throw 0;
+	}
+	catch (const int& e)
+	{
+		cout << "The �ower of The Set shouldn't be 0" << endl;
+		return 0;
+
+	}
+
+	Set b(Power);
+	for (int i = 0; i < b.power(); i++)
+	{
+		cout << "Enter element [" << i + 1 << "]   ";
+		unsigned int value;
+		cin >> value;
+		b.insert(i, value);
+	}
+	
+	
+	cout << "intersection: " << endl;
+	Set c = a.Intersection(b);
+	c.Output();
 	
 
-	cout << "Пересечение множеств" << endl;
-	a.Intersection(b);
-	
 
 	return 0;
 	system("Pause");

@@ -22,7 +22,7 @@ Set::Set(const Set& p) : Set(p.Power) {
 }
 
 
-void Set::Intersection(Set const& b)
+Set Set::Intersection(Set const& b)
 { 
     int n = 0;
 
@@ -35,8 +35,7 @@ void Set::Intersection(Set const& b)
             }
         }
    
-   Set obj;
-   obj.Power = n;
+    Set obj(n);
     
     for (int i = 0; i < Power; ++i)
         for (int j = 0; j < b.Power; ++j)
@@ -46,31 +45,10 @@ void Set::Intersection(Set const& b)
               obj.Arr[i] = Arr[i];
             }
         }
-    obj.Output();
+
+    return obj;
+
 }
-
-
-void Set::Input()
-{
-    cout << "Введите размер " << endl;
-    cin >> Power;
-    realloc(Power);
-    for (int i = 0; i < Power; i++)
-    {
-        cout << "Введите элемент [" << i + 1 << "]   ";
-        cin >> Arr[i];
-    }
-}
-
-
-
-void Set::Output()
-{
-    for (int i = 0; i < Power; i++)
-        cout << Arr[i] << " ";
-    cout << endl;
-}
-
 
 void Set::realloc(int new_pow) {
     if (Arr != nullptr) 
@@ -91,32 +69,23 @@ int Set::power() const {
     return Power;
 }
 
-int& Set::at(size_t index) {
+void Set::Output()
+{
+    for (int i = 0; i < Power; i++)
+        cout << Arr[i] << " ";
+    cout << endl;
+}
+
+unsigned int& Set::at(size_t index) {
 
     return Arr[index];
 
 }
 
-void Set::insert(size_t index, int value) {
+void Set::insert(size_t index, unsigned int value) {
 
     Arr[index] = value;
 }
-
-void Set::realloc(int new_pow) {
-    if (Arr != nullptr) 
-    { 
-        delete[] Arr; 
-    }
-    if (new_pow != 0) 
-    { 
-        Arr = new unsigned int[new_pow];
-    }
-    else { 
-        Arr = nullptr; 
-    }
-    Power = new_pow;
-}
-
 
 Set::~Set()
 {
