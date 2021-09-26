@@ -9,19 +9,7 @@ Set::Set():Set(0) {}
 
 Set::Set(int _Power)
 {
-    if (_Power == 0) {
-        Power = _Power;
-        Arr == nullptr;
-    }
-    else {
-        Power = _Power;
-        Arr = new unsigned int[Power];
-
-        for (int i = 0; i < Power; i++)
-        {
-            Arr[i] = 0;
-        }
-    }
+    realloc(_Power);
 }
 
 
@@ -66,7 +54,7 @@ void Set::Input()
 {
     cout << "Введите размер " << endl;
     cin >> Power;
-    Arr = new unsigned int[Power];
+    realloc(Power);
     for (int i = 0; i < Power; i++)
     {
         cout << "Введите элемент [" << i + 1 << "]   ";
@@ -83,14 +71,21 @@ void Set::Output()
     cout << endl;
 }
 
-/*
+
 void Set::realloc(int new_pow) {
-    if () 
-    else {
-        Arr = new unsigned int[Power];
+    if (Arr != nullptr) 
+    { 
+        delete[] Arr; 
     }
+    if (new_pow != 0) 
+    { 
+        Arr = new unsigned int[new_pow];
+    }
+    else { 
+        Arr = nullptr; 
+    }
+    Power = new_pow;
 }
-*/
 
 
 Set::~Set()
