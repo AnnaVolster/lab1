@@ -19,7 +19,7 @@ public:
 	void realloc(int new_pow);
 	int power() const;
 	unsigned int& at(size_t index);
-	void insert(size_t index, int value);
+	void insert(size_t index, unsigned int value);
 	~Set();
 };
 
