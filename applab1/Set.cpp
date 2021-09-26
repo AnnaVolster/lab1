@@ -98,7 +98,7 @@ unsigned int& Set::at(size_t index) {
 
 }
 
-void Set::insert(size_t index, int value) {
+void Set::insert(size_t index, unsigned int value) {
 
     Arr[index] = value;
 }
