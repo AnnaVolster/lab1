@@ -8,8 +8,11 @@ using namespace std;
 Set::Set():Set(0) {}
 
 Set::Set(int _Power)
-{ 
-    if (_Power == 0) Arr = nullptr; 
+{
+    if (_Power == 0) {
+        Power = _Power;
+        Arr == nullptr;
+    }
     else {
         Power = _Power;
         Arr = new unsigned int[Power];
@@ -19,7 +22,6 @@ Set::Set(int _Power)
             Arr[i] = 0;
         }
     }
-   
 }
 
 
@@ -32,14 +34,14 @@ Set::Set(const Set& p) : Set(p.Power) {
 }
 
 
-Set Set::Intersection(Set a, Set b)
+void Set::Intersection(Set const& b)
 { 
-    int i, j, n = 0;
+    int n = 0;
 
-    for (i = 0; i < a.Power; i++)
-        for (j = 0; j < b.Power; j++)
+    for (int i = 0; i < Power; ++i)
+        for (int j = 0; j < b.Power; ++j)
         {
-            if (a.Arr[i] == b.Arr[j])
+            if (Arr[i] == b.Arr[j])
             {
                 n++;
             }
@@ -48,30 +50,31 @@ Set Set::Intersection(Set a, Set b)
    Set obj;
    obj.Power = n;
     
-    for (i = 0; i < a.Power; i++)
-        for (j = 0; j < b.Power; j++)
+    for (int i = 0; i < Power; ++i)
+        for (int j = 0; j < b.Power; ++j)
         {
-            if (a.Arr[i] == b.Arr[j])
+            if (Arr[i] == b.Arr[j])
             {
-              obj.Arr[i] = a.Arr[i];
+              obj.Arr[i] = Arr[i];
             }
         }
-
-    return obj;
+    obj.Output();
 }
 
 
 void Set::Input()
 {
-    cout << "Ââåäèòå ðàçìåð " << endl;
+    cout << "Введите размер " << endl;
     cin >> Power;
     Arr = new unsigned int[Power];
     for (int i = 0; i < Power; i++)
     {
-        cout << "Ââåäèòå ýëåìåíò [" << i + 1 << "]   ";
+        cout << "Введите элемент [" << i + 1 << "]   ";
         cin >> Arr[i];
     }
 }
+
+
 
 void Set::Output()
 {
@@ -79,6 +82,15 @@ void Set::Output()
         cout << Arr[i] << " ";
     cout << endl;
 }
+
+/*
+void Set::realloc(int new_pow) {
+    if () 
+    else {
+        Arr = new unsigned int[Power];
+    }
+}
+*/
 
 
 Set::~Set()
