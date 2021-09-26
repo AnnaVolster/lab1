@@ -1,4 +1,4 @@
-﻿#include "Set.h"
+#include "Set.h"
 #include <iostream>
 #include <vld.h>
 

@@ -52,12 +52,12 @@ void Set::Intersection(Set const& b)
 
 void Set::Input()
 {
-    cout << "Ââåäèòå ðàçìåð " << endl;
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ð¼ÐµÑ€ " << endl;
     cin >> Power;
     realloc(Power);
     for (int i = 0; i < Power; i++)
     {
-        cout << "Ââåäèòå ýëåìåíò [" << i + 1 << "]   ";
+        cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚ [" << i + 1 << "]   ";
         cin >> Arr[i];
     }
 }
@@ -101,6 +101,22 @@ void Set::insert(size_t index, int value) {
 
     Arr[index] = value;
 }
+
+void Set::realloc(int new_pow) {
+    if (Arr != nullptr) 
+    { 
+        delete[] Arr; 
+    }
+    if (new_pow != 0) 
+    { 
+        Arr = new unsigned int[new_pow];
+    }
+    else { 
+        Arr = nullptr; 
+    }
+    Power = new_pow;
+}
+
 
 Set::~Set()
 {
