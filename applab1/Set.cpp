@@ -23,7 +23,7 @@ Set::Set(const Set& p) : Set(p.Power) {
 
 
 Set Set::Intersection(Set const& b)
-{ 
+{
     int n = 0;
 
     for (int i = 0; i < Power; ++i)
@@ -34,19 +34,22 @@ Set Set::Intersection(Set const& b)
                 n++;
             }
         }
-   
+
     Set obj(n);
-    
+    int k = 0;
     for (int i = 0; i < Power; ++i)
-        for (int j = 0; j < b.Power; ++j)
+        for (int j = 0; j < b.Power; ++j)   
         {
             if (Arr[i] == b.Arr[j])
             {
-              obj.Arr[i] = Arr[i];
+                obj.Arr[k] = Arr[i];
+                k++;
             }
+            
         }
     return obj;
 }
+    
 
     
 
