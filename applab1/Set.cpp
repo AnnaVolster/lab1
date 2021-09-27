@@ -45,12 +45,10 @@ Set Set::Intersection(Set const& b)
               obj.Arr[i] = Arr[i];
             }
         }
-    obj.Output();
-}
-
     return obj;
-
 }
+
+    
 
 void Set::realloc(int new_pow) {
     if (Arr != nullptr) 
